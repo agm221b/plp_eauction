@@ -1,0 +1,57 @@
+<h1>
+    Adding Product
+</h1>
+
+
+
+
+<table>
+    <tr>
+        <td><b>Product Id</b></td>
+        <td><input type="text" [(ngModel)]="prodId" /></td>
+    </tr>
+    <!-- <td><b>Product Online</b></td>
+    <td><b>Product Type</b></td> -->
+
+    <tr>
+        <td><b>Product Name</b></td>
+        <td><input type="text" [(ngModel)]="prodName" /></td>
+
+    </tr>
+    <tr>
+        <td><b>Product Online</b></td>
+        <td><input type="text" [(ngModel)]="prodOnline" /></td>
+    </tr>
+    <tr>
+        <td><b>Product Type</b></td>
+        <td><input type="text" [(ngModel)]="prodType" /></td>
+    </tr>
+    <tr>
+        <td>
+            <input type="button" value="Add Data" (click)="getAllData()"/>
+        </td>
+    </tr>
+</table>
+
+<img [src]="pic" width="1000" height="400" />
+<br>
+{{prodId}}
+{{prodName}}
+<div *ngIf="prodOnline else falseblock"> {{prodOnline}} is true</div> 
+<ng-template #falseblock> {{prodOnline}} is not true </ng-template>
+{{prodType}}
+
+<table border="1">
+    <tr>
+        <th>Product Id</th>
+        <th>Product Name</th>
+
+    </tr>
+
+    <tr *ngFor="let pro of products,let i=index">
+        <td> {{pro.prodId}}</td>
+        <td> {{pro.prodName}}</td>
+        <td><input type="button" (click)="delete(pro)" value="Delete"></td>
+    </tr>
+
+</table>

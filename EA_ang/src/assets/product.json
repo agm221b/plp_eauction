@@ -1,0 +1,17 @@
+[
+    {
+        "prodId": 1004,
+        "prodName": "Rice",
+        "prodPrice": 64
+    },
+    {
+        "prodId": 1006,
+        "prodName": "Mobike",
+        "prodPrice": 6661
+    },
+    {
+        "prodId": 1008,
+        "prodName": "bike",
+        "prodPrice": 96661
+    }
+]

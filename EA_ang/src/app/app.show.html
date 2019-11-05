@@ -1,0 +1,52 @@
+<h2>Showing the list of products</h2>
+
+<table border="1">
+    <tr>
+        <th>Product Id</th>
+        <th>Product Name</th>
+        <th>Product Cost</th>
+        <th>Product Description</th>
+        <th>Update</th>
+        <th>Delete</th>
+
+    </tr>
+
+    <tr *ngFor="let pro of productsList,let i=index">
+        <td> {{pro.prodId}}</td>
+        <td> {{pro.prodName}}</td>
+        <td> {{pro.prodCost}}</td>
+        <td> {{pro.prodDescription}}</td>
+        <td><input type="button" (click)="updateProduct(pro)" value="Update"></td>
+        <td><input type="button" (click)="deleteProduct(pro.prodId)" value="Delete"></td>
+    </tr>
+
+</table>
+
+<table *ngIf="update">
+    <tr>
+        <td><b>Product Id</b></td>
+        <td><input type="text" [(ngModel)]="prodId" /></td>
+    </tr>
+   
+
+    <tr>
+        <td><b>Product Name</b></td>
+        <td><input type="text" [(ngModel)]="prodName" /></td>
+    </tr>
+
+    <tr>
+        <td><b>Product Cost</b></td>
+        <td><input type="text" [(ngModel)]="prodCost" /></td>
+    </tr>
+
+
+    <tr>
+        <td><b>Product Description</b></td>
+        <td><input type="text" [(ngModel)]="prodDescription" /></td>
+    </tr>
+    
+    <tr>
+    
+        <td><input type="button"  value="Update Product" (click)="updateProductInsert()" /></td>
+    </tr>
+</table>

@@ -1,0 +1,31 @@
+<h1>Add Product</h1>
+<table>
+    <tr>
+        <td><b>Product Id</b></td>
+        <td><input type="text" [(ngModel)]="model.prodId" required/></td>
+    </tr>
+    <!-- <td><b>Product Online</b></td>
+    <td><b>Product Type</b></td> -->
+
+    <tr>
+        <td><b>Product Name</b></td>
+        <td><input type="text" [(ngModel)]="model.prodName"  required/></td>
+    </tr>
+
+    <tr>
+        <td><b>Product Cost</b></td>
+        <td><input type="text" [(ngModel)]="model.prodCost"  required/></td>
+    </tr>
+
+    <tr>
+        <td><b>Product Description</b></td>
+        <td><input type="text" [(ngModel)]="model.prodDescription"  required/></td>
+    </tr>
+    
+    <tr>
+    
+        <td><input type="button"  value="Add Product" (click)="addProduct()" /></td>
+    </tr>
+</table>
+
+
