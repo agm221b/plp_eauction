@@ -42,7 +42,7 @@ public class AuctionItem {
 	@Column(name = "final_price")
 	private Double finalPrice;
 	@Column(name = "final_owner")
-	private String finalOwner;
+	private User finalOwner;
 	@Column(name = "sold_flag")
 	private Integer soldFlag;
 	
@@ -69,7 +69,7 @@ public class AuctionItem {
 	}
 	public AuctionItem(Long itemId,
 			@Size(min = 3, max = 20, message = "Name should be between 3-20 characters") String itemName,
-			Double initPrice, Double currentPrice, User currentBidder, Double finalPrice, String finalOwner,
+			Double initPrice, Double currentPrice, User currentBidder, Double finalPrice, User finalOwner,
 			Integer soldFlag, AuctionEvent auctionEvent, Integer deleteFlag) {
 		super();
 		this.itemId = itemId;
@@ -126,10 +126,10 @@ public class AuctionItem {
 	public void setFinalPrice(Double finalPrice) {
 		this.finalPrice = finalPrice;
 	}
-	public String getFinalOwner() {
+	public User getFinalOwner() {
 		return finalOwner;
 	}
-	public void setFinalOwner(String finalOwner) {
+	public void setFinalOwner(User finalOwner) {
 		this.finalOwner = finalOwner;
 	}
 	public Integer getSoldFlag() {
