@@ -126,10 +126,21 @@ public class EAuctionController {
 		return new ResponseEntity<String>("Item Added to Event", HttpStatus.OK);
 	}
 	
+	
+	
+	/*
+	 * 
+	 * Request Bid left
+	 * Synchronized method
+	 */
+	
+	/*
+	 * Start event at a fixed time
+	 */
+	
 	/*******User**********/	
 	
 	@PostMapping("/adduser")
-	//@PreAuthorize
 	public ResponseEntity<?> addUser(@RequestBody User user){
 		
 		try {

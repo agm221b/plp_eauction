@@ -30,9 +30,8 @@ public class User {
 	
 	@Size(min=3,max=60,message="Name should be between 3-60 characters")
 	private String username;
-	
+	//@JsonIgnore
 	@Column(name="pass")
-	@JsonIgnore
 	private String pass;
 	@Column(name = "user_type")
 	private Character userType;
