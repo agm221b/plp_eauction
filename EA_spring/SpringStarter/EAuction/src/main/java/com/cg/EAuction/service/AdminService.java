@@ -17,6 +17,8 @@ public interface AdminService {
 
 	public List<AuctionEvent> viewAllEvents();
 	
+	public List<AuctionItem> viewAllItemsInEvent(Long eventId);
+	
 	/*******Item**********/
 	
 	public AuctionItem addItem(AuctionItem auctionItem) throws EAException;
@@ -36,4 +38,6 @@ public interface AdminService {
 	public List<User> viewAllUser();
 	
 	public int removeUser(Long userId) throws EAException;
+
+	
 }

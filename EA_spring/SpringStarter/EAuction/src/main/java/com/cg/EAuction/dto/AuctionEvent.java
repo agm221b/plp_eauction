@@ -22,6 +22,8 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 public class AuctionEvent {
 	
@@ -36,7 +38,7 @@ public class AuctionEvent {
 	private List<AuctionItem> itemList;
 	
 	private String venue;
-	
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
 	private LocalDate date;
 	@Column(name = "start_time")
 	private LocalTime startTime;

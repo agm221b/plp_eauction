@@ -70,12 +70,27 @@ public class AdminServiceImpl implements AdminService {
 		return eventRepository.findAllByDeleteFlag(0);
 	}
 	
+	
+	
+	@Override
+	public List<AuctionItem> viewAllItemsInEvent(Long eventId) {
+		// TODO Auto-generated method stub
+		
+			
+		
+		return eventRepository.findByEventIdAndDeleteFlag(eventId, 0).getItemList();
+		
+		
+	}
+
 	/*******Item**********/
 
 	@Override
 	public AuctionItem addItem(AuctionItem auctionItem) throws EAException {
 		// TODO Auto-generated method stub
 		auctionItem.setDeleteFlag(0);
+		auctionItem.setSoldFlag(0);
+		
 		AuctionItem saveItem = itemRepository.save(auctionItem);
 		if (saveItem == null) {
 			throw new EAException("Item Not Found");
@@ -153,8 +168,14 @@ public class AdminServiceImpl implements AdminService {
 					logger.error("Item already present in an event");
 					throw new EAException("Item already present in an event");
 				}
+				
 				List<AuctionItem> itemList = saveAuctionEvent.getItemList();
 				itemList.add(saveAuctionItem);
+				saveAuctionEvent.setItemList(itemList);
+				
+				eventRepository.save(saveAuctionEvent);
+				saveAuctionItem.setAuctionEvent(saveAuctionItem.getAuctionEvent());
+				itemRepository.save(saveAuctionItem);
 				logger.info("Item :" + saveAuctionItem + ", added to event: " + saveAuctionEvent);
 				logger.info("Created by: " + saveAuctionItem.getCreatedBy() + ", created on: "
 						+ saveAuctionItem.getCreationDate() + ", modified by: " + saveAuctionItem.getLastModifiedBy()
