@@ -2,9 +2,12 @@ package com.cg.EAuction.service;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.cg.EAuction.EAException;
 import com.cg.EAuction.dao.EventRepository;
@@ -13,7 +16,8 @@ import com.cg.EAuction.dao.UserRepository;
 import com.cg.EAuction.dto.AuctionEvent;
 import com.cg.EAuction.dto.AuctionItem;
 import com.cg.EAuction.dto.User;
-
+@Service
+@Transactional
 public class CustomerServiceImpl implements CustomerService {
 
 	@Autowired
@@ -45,21 +49,32 @@ public class CustomerServiceImpl implements CustomerService {
 	}
 
 	@Override
-	public List<AuctionItem> viewUserItemList(Long userId) {
+	public List<AuctionItem> viewUserItemList(Long userId) throws EAException {
 		// TODO Auto-generated method stub
-		return null;
+		User finalOwner = userRepository.findByUserIdAndActive(userId, true);
+		if(finalOwner ==null) {
+			logger.error("User doesn't exist");
+			throw new EAException("User doesn't exist");
+		}
+		return itemRepository.findByFinalOwnerAndDeleteFlag(finalOwner, 0);
 	}
 
 	@Override
-	public int completePayment() {
+	public int completePayment(Long itemId, String paymentType) throws EAException {
 		// TODO Auto-generated method stub
-		return 0;
+		AuctionItem saveItem = itemRepository.findByItemIdAndDeleteFlag(itemId, 0);
+		if(saveItem==null) {
+			logger.error("Item doesn't exist");
+			throw new EAException("Item doesn't exist");
+		}
+		saveItem.setPaymentType(paymentType);		
+		return 1;
 	}
 
 	@Override
 	public List<AuctionEvent> viewEventList() {
 		// TODO Auto-generated method stub
-		return null;
+		return eventRepository.findAllByDeleteFlag(0);
 	}
 
 }

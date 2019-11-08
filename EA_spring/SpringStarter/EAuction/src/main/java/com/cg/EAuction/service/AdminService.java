@@ -9,11 +9,15 @@ import com.cg.EAuction.dto.User;
 
 public interface AdminService {
 	
+	/*******Event**********/
+	
 	public AuctionEvent addEvent(AuctionEvent auctionEvent) throws EAException;
 	
 	public int removeEvent(Long eventId) throws EAException;
 
 	public List<AuctionEvent> viewAllEvents();
+	
+	/*******Item**********/
 	
 	public AuctionItem addItem(AuctionItem auctionItem) throws EAException;
 	
@@ -24,6 +28,8 @@ public interface AdminService {
 	public List<AuctionItem> viewAllItems();
 	
 	public int addItemToEvent(Long itemId, Long eventId) throws EAException;
+	
+	/*******User**********/
 	
 	public User addUser(User user) throws EAException;
 	

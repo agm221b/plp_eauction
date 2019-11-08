@@ -1,6 +1,5 @@
 package com.cg.EAuction.dto;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -12,14 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.validation.constraints.Size;
 
-import org.springframework.data.annotation.CreatedBy;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedBy;
-import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -61,16 +54,7 @@ public class User {
 	
 	@Column(name="roles")
 	private String roles;
-	@CreatedBy
-    protected String createdBy;
-    @CreatedDate
-    @Temporal(TemporalType.TIMESTAMP)
-    protected Date creationDate;
-    @LastModifiedBy
-    protected String lastModifiedBy;
-    @LastModifiedDate
-    @Temporal(TemporalType.TIMESTAMP)
-    protected Date lastModifiedDate;
+	
     
     public User() {
 		// TODO Auto-generated constructor stub
@@ -164,38 +148,7 @@ public class User {
 		this.roles = roles;
 	}
 
-	public String getCreatedBy() {
-		return createdBy;
-	}
-
-	public void setCreatedBy(String createdBy) {
-		this.createdBy = createdBy;
-	}
-
-	public Date getCreationDate() {
-		return creationDate;
-	}
-
-	public void setCreationDate(Date creationDate) {
-		this.creationDate = creationDate;
-	}
-
-	public String getLastModifiedBy() {
-		return lastModifiedBy;
-	}
-
-	public void setLastModifiedBy(String lastModifiedBy) {
-		this.lastModifiedBy = lastModifiedBy;
-	}
-
-	public Date getLastModifiedDate() {
-		return lastModifiedDate;
-	}
-
-	public void setLastModifiedDate(Date lastModifiedDate) {
-		this.lastModifiedDate = lastModifiedDate;
-	}
-
+	
 	public User(Long userId,
 			@Size(min = 3, max = 60, message = "Name should be between 3-60 characters") String username, String pass,
 			Character userType, String email, String gender, String mobileNo, List<AuctionItem> itemList,
@@ -226,13 +179,9 @@ public class User {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((active == null) ? 0 : active.hashCode());
-		result = prime * result + ((createdBy == null) ? 0 : createdBy.hashCode());
-		result = prime * result + ((creationDate == null) ? 0 : creationDate.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + ((gender == null) ? 0 : gender.hashCode());
 		result = prime * result + ((itemList == null) ? 0 : itemList.hashCode());
-		result = prime * result + ((lastModifiedBy == null) ? 0 : lastModifiedBy.hashCode());
-		result = prime * result + ((lastModifiedDate == null) ? 0 : lastModifiedDate.hashCode());
 		result = prime * result + ((mobileNo == null) ? 0 : mobileNo.hashCode());
 		result = prime * result + ((pass == null) ? 0 : pass.hashCode());
 		result = prime * result + ((roles == null) ? 0 : roles.hashCode());
@@ -257,16 +206,6 @@ public class User {
 				return false;
 		} else if (!active.equals(other.active))
 			return false;
-		if (createdBy == null) {
-			if (other.createdBy != null)
-				return false;
-		} else if (!createdBy.equals(other.createdBy))
-			return false;
-		if (creationDate == null) {
-			if (other.creationDate != null)
-				return false;
-		} else if (!creationDate.equals(other.creationDate))
-			return false;
 		if (email == null) {
 			if (other.email != null)
 				return false;
@@ -281,16 +220,6 @@ public class User {
 			if (other.itemList != null)
 				return false;
 		} else if (!itemList.equals(other.itemList))
-			return false;
-		if (lastModifiedBy == null) {
-			if (other.lastModifiedBy != null)
-				return false;
-		} else if (!lastModifiedBy.equals(other.lastModifiedBy))
-			return false;
-		if (lastModifiedDate == null) {
-			if (other.lastModifiedDate != null)
-				return false;
-		} else if (!lastModifiedDate.equals(other.lastModifiedDate))
 			return false;
 		if (mobileNo == null) {
 			if (other.mobileNo != null)
@@ -329,8 +258,7 @@ public class User {
 			return false;
 		return true;
 	}
-	
-	
+
     
     
 	

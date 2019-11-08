@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -35,19 +36,24 @@ public class AuctionItem {
 	@Column(name = "current_price")
 	private Double currentPrice;
 	
-	@Column(name = "current_bidder")
+	
 	@ManyToOne
 	private User currentBidder;
 	
 	@Column(name = "final_price")
 	private Double finalPrice;
-	@Column(name = "final_owner")
+	
+	@ManyToOne
+	@JoinColumn(name = "user_fk")
 	private User finalOwner;
 	@Column(name = "sold_flag")
 	private Integer soldFlag;
+	@Column(name = "payment_type")
+	private String paymentType;
 	
-	@Column(name = "auction_event")
+	
 	@ManyToOne
+	@JoinColumn(name= "item_fk")
 	private AuctionEvent auctionEvent;
 	
 	@Column(name = "delete_flag")
@@ -70,7 +76,7 @@ public class AuctionItem {
 	public AuctionItem(Long itemId,
 			@Size(min = 3, max = 20, message = "Name should be between 3-20 characters") String itemName,
 			Double initPrice, Double currentPrice, User currentBidder, Double finalPrice, User finalOwner,
-			Integer soldFlag, AuctionEvent auctionEvent, Integer deleteFlag) {
+			Integer soldFlag, AuctionEvent auctionEvent, Integer deleteFlag, String paymentType) {
 		super();
 		this.itemId = itemId;
 		this.itemName = itemName;
@@ -82,13 +88,17 @@ public class AuctionItem {
 		this.soldFlag = soldFlag;
 		this.auctionEvent = auctionEvent;
 		this.deleteFlag = deleteFlag;
+		this.paymentType = paymentType;
 	}
+	
 	@Override
 	public String toString() {
 		return "AuctionItem [itemId=" + itemId + ", itemName=" + itemName + ", initPrice=" + initPrice
 				+ ", currentPrice=" + currentPrice + ", currentBidder=" + currentBidder + ", finalPrice=" + finalPrice
-				+ ", finalOwner=" + finalOwner + ", soldFlag=" + soldFlag + ", auctionEvent=" + auctionEvent
-				+ ", deleteFlag=" + deleteFlag + "]";
+				+ ", finalOwner=" + finalOwner + ", soldFlag=" + soldFlag + ", paymentType=" + paymentType
+				+ ", auctionEvent=" + auctionEvent + ", deleteFlag=" + deleteFlag + ", createdBy=" + createdBy
+				+ ", creationDate=" + creationDate + ", lastModifiedBy=" + lastModifiedBy + ", lastModifiedDate="
+				+ lastModifiedDate + "]";
 	}
 	public Long getItemId() {
 		return itemId;
@@ -174,10 +184,13 @@ public class AuctionItem {
 	public void setLastModifiedDate(Date lastModifiedDate) {
 		this.lastModifiedDate = lastModifiedDate;
 	}
+	public String getPaymentType() {
+		return paymentType;
+	}
+	public void setPaymentType(String paymentType) {
+		this.paymentType = paymentType;
+	}
 	
 	
-    
-    
-    
 
 }

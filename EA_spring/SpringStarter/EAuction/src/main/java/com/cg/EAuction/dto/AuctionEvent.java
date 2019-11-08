@@ -35,8 +35,8 @@ public class AuctionEvent {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "auctionEvent", fetch = FetchType.EAGER)
 	private List<AuctionItem> itemList;
 	
-	
 	private String venue;
+	
 	private LocalDate date;
 	@Column(name = "start_time")
 	private LocalTime startTime;

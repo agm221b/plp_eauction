@@ -15,6 +15,7 @@ public class EAuctionApplication {
 		
 		final Logger logger = LoggerFactory.getLogger(EAuctionApplication.class);
 		logger.info("E Auction App Started");
+		System.out.println("E Auction App Started");
 	}
 
 }

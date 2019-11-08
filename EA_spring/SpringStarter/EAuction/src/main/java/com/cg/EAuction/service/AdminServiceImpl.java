@@ -2,9 +2,12 @@ package com.cg.EAuction.service;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.cg.EAuction.EAException;
 import com.cg.EAuction.dao.EventRepository;
@@ -13,7 +16,8 @@ import com.cg.EAuction.dao.UserRepository;
 import com.cg.EAuction.dto.AuctionEvent;
 import com.cg.EAuction.dto.AuctionItem;
 import com.cg.EAuction.dto.User;
-
+@Service
+@Transactional
 public class AdminServiceImpl implements AdminService {
 
 	@Autowired
@@ -65,6 +69,8 @@ public class AdminServiceImpl implements AdminService {
 		// TODO Auto-generated method stub
 		return eventRepository.findAllByDeleteFlag(0);
 	}
+	
+	/*******Item**********/
 
 	@Override
 	public AuctionItem addItem(AuctionItem auctionItem) throws EAException {
@@ -129,7 +135,8 @@ public class AdminServiceImpl implements AdminService {
 		// TODO Auto-generated method stub
 		return itemRepository.findByDeleteFlag(0);
 	}
-
+	
+	
 	@Override
 	public int addItemToEvent(Long itemId, Long eventId) throws EAException {
 		// TODO Auto-generated method stub
@@ -160,7 +167,7 @@ public class AdminServiceImpl implements AdminService {
 	}
 	
 	
-	
+	/*******User**********/
 
 	@Override
 	public User addUser(User user) throws EAException {
@@ -180,7 +187,7 @@ public class AdminServiceImpl implements AdminService {
 			throw new EAException("User Not Added");
 		}
 		logger.info("User saved: " +user);
-		logger.info("Created by: "+user.getCreatedBy()+", created on: "+user.getCreationDate()+", modified by: "+user.getLastModifiedBy()+", modified on: "+user.getLastModifiedDate());
+		
 		
 		return user;
 	}
@@ -200,9 +207,7 @@ public class AdminServiceImpl implements AdminService {
 		} else
 			saveUser.setActive(false);
 		logger.info("User deleted:" + saveUser);
-		logger.info("Created by: " + saveUser.getCreatedBy() + ", created on: " + saveUser.getCreationDate()
-				+ ", modified by: " + saveUser.getLastModifiedBy() + ", modified on: "
-				+ saveUser.getLastModifiedDate());
+		
 
 		return 1;
 	}

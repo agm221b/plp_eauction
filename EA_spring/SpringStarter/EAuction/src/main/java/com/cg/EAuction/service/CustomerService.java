@@ -11,9 +11,9 @@ public interface CustomerService {
 	
 	public int requestBid(AuctionItem auctionItem, Double currentPrice, User currentBidder) throws EAException;
 	
-	public List<AuctionItem> viewUserItemList(Long userId);
+	public List<AuctionItem> viewUserItemList(Long userId) throws EAException;
 	
-	public int completePayment();
+	public int completePayment(Long itemId, String paymentType) throws EAException;
 	
 	public List<AuctionEvent> viewEventList();
 }
