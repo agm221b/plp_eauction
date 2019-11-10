@@ -19,7 +19,7 @@ public interface AdminService {
 	
 	/*******Item**********/
 	
-	public AuctionItem addItem(AuctionItem auctionItem) throws EAException;
+	public AuctionItem addItem(AuctionItem auctionItem, Long eventId) throws EAException;
 	
 	public AuctionItem updateItem(AuctionItem auctionItem) throws EAException;
 	

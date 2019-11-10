@@ -48,10 +48,10 @@ public class EAuctionController {
 	
 	@PostMapping("/additem")
 	//@PreAuthorize
-	public ResponseEntity<?> addItem(@RequestBody AuctionItem auctionItem){
+	public ResponseEntity<?> addItem(@RequestBody AuctionItem auctionItem, @RequestParam("eventId") Long eventId){
 		
 		try {
-			adminService.addItem(auctionItem);
+			adminService.addItem(auctionItem, eventId);
 		} catch (EAException e) {
 			// TODO Auto-generated catch block
 			logger.error(e.getMessage());
@@ -111,20 +111,17 @@ public class EAuctionController {
 		}
 	}
 	
-	@PutMapping("/additemtoevent")
-	//@PreAuthorize
-	public ResponseEntity<?> addItemToEvent(@RequestParam("itemId") Long itemId, @RequestParam("eventId") Long eventId){
-		
-		try {
-			adminService.addItemToEvent(itemId, eventId);
-		} catch (EAException e) {
-			// TODO Auto-generated catch block
-			logger.error(e.getMessage());
-			return new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
-		}
-		
-		return new ResponseEntity<String>("Item Added to Event", HttpStatus.OK);
-	}
+	/*
+	 * @PutMapping("/additemtoevent") //@PreAuthorize public ResponseEntity<?>
+	 * addItemToEvent(@RequestParam("itemId") Long itemId, @RequestParam("eventId")
+	 * Long eventId){
+	 * 
+	 * try { adminService.addItemToEvent(itemId, eventId); } catch (EAException e) {
+	 * // TODO Auto-generated catch block logger.error(e.getMessage()); return new
+	 * ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST); }
+	 * 
+	 * return new ResponseEntity<String>("Item Added to Event", HttpStatus.OK); }
+	 */
 	
 	
 	

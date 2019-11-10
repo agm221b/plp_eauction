@@ -73,9 +73,11 @@ public class AdminServiceImpl implements AdminService {
 	/*******Item**********/
 
 	@Override
-	public AuctionItem addItem(AuctionItem auctionItem) throws EAException {
+	public AuctionItem addItem(AuctionItem auctionItem, Long eventId) throws EAException {
 		// TODO Auto-generated method stub
 		auctionItem.setDeleteFlag(0);
+		
+		auctionItem.setAuctionEvent(eventRepository.findByEventIdAndDeleteFlag(eventId, 0));
 		AuctionItem saveItem = itemRepository.save(auctionItem);
 		if (saveItem == null) {
 			throw new EAException("Item Not Found");
