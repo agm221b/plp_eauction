@@ -1,4 +1,4 @@
-﻿import { NgModule, Component }      from '@angular/core';
+﻿import { NgModule, Component }      from '@angular/core'; 
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent }  from './app.component';
 import { ProductComponent } from './app.productcomponent';

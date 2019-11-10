@@ -214,6 +214,14 @@ public class EAuctionController {
 		return new ResponseEntity<List<AuctionEvent>>(adminService.viewAllEvents(), HttpStatus.OK);
 	}
 	
+	@GetMapping("/viewitemsinevent")
+	//@PreAuthorize
+	public ResponseEntity<?> viewItemsInEvent(@RequestParam ("eventId") Long eventId){
+		logger.info("Viewing List of items in event");
+		
+		return new ResponseEntity<List<AuctionItem>>(adminService.viewAllItemsInEvent(eventId), HttpStatus.OK);
+	}
+	
 	
 	
 	

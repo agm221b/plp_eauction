@@ -44,7 +44,7 @@ public class AuctionItem {
 	private Double finalPrice;
 	
 	@ManyToOne
-	@JoinColumn(name = "user_fk")
+	@JoinColumn(name = "finalowner_fk")
 	private User finalOwner;
 	@Column(name = "sold_flag")
 	private Integer soldFlag;
@@ -53,7 +53,7 @@ public class AuctionItem {
 	
 	
 	@ManyToOne
-	@JoinColumn(name= "item_fk")
+	@JoinColumn(name= "eventId")
 	private AuctionEvent auctionEvent;
 	
 	@Column(name = "delete_flag")
