@@ -1,18 +1,18 @@
 ﻿import { NgModule, Component }      from '@angular/core'; 
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent }  from './app.component';
-import { ProductComponent } from './app.productcomponent';
-import { ShowProductComponent} from './app.showproductcomponent';
 import {FormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes} from '@angular/router'
-import { aboutUs } from './app,aboutuscomponent';
+import { aboutUs } from './_component/app,aboutuscomponent';
+import { HomeComponent } from './_component/app.homecomponent';
+import { AddItem } from './_component/app.additem';
 
 const myroutes: Routes=[
-    {path : '', component: aboutUs,pathMatch:'full'},
-    {path : 'aboutus', component: aboutUs},
-    {path : 'show', component: ShowProductComponent},
-    {path : 'add', component: ProductComponent}
+    {path : '', component: HomeComponent,pathMatch:'full'},
+    {path: 'home', component: HomeComponent},
+    {path : 'additem', component: AddItem},
+    {path : 'aboutus', component: aboutUs}
 ]
 
 
@@ -23,7 +23,7 @@ const myroutes: Routes=[
         
     ],
     declarations: [
-        AppComponent, ProductComponent, ShowProductComponent, aboutUs
+        AppComponent, HomeComponent, aboutUs, AddItem
 		],
     providers: [ ],
     bootstrap: [AppComponent]
