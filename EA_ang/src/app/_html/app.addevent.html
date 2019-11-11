@@ -88,7 +88,7 @@
   <!-- header end -->
   <br> <br> <br> <br> <br> <br>
 
-
+  
   <!--  
 <h2> Add an Item:- </h2>
 <div class="col-md-12 col-sm-12 col-xs-12">
@@ -133,7 +133,7 @@
         </tr>
 
         <tr>
-          <td><b>Item Name</b></td>
+          <td><b>Event Name</b></td>
 
           <div class="form-row">
             <div class="form-group col-sm-6">
@@ -149,44 +149,38 @@
             </div>
           </div>
         </tr>
-       
 
 
         <tr>
-          <td><b>Event: </b></td>
-          <div class="form-row">
-            <div class="form-group col-md-8">
-
-              <div class="form-group">
-
-                <select class="form-control form-control-lg" name="event" [(ngModel)]="model.auctionEvent" 
-                   required>
-                  <option disabled selected>--Select--</option>
-                  <option *ngFor="let aucEvent of events;" [value]="aucEvent">{{aucEvent.eventName}}</option>
-                </select>
+            <td><b>Event Venue</b></td>
+  
+            <div class="form-row">
+              <div class="form-group col-sm-6">
+  
+                <div class="col-md-16 "><input #nv [ngClass]="{'form-control':'true' }" placeholder="Venue" type="text"
+                    [(ngModel)]="model.itemName" /></div>
+                <div *ngIf="nv.value.length>=4 && nv.value.match('^[a-zA-Z ]*$');else venue"></div>
+                <ng-template #venue>
+                  <p *ngIf="nv.value.length!=0 " [ngStyle]="{'background-color':'red','color':'white'}">Venue Name should
+                    have atleast 4 characters and must be an alphabet </p>
+                </ng-template>
+  
               </div>
             </div>
-          </div>
-
-        </tr>
-
-        <tr>
-          <td><b>Item Price</b></td>
-          <div class="form-row">
-            <div class="form-group col-md-8">
-              <div class="col-md-18"><input #cps [ngClass]="{'form-control':'true' }" placeholder="Item Price"
-                  type="text" [(ngModel)]="model.itemPrice" /></div>
-              <div *ngIf="cps.value.length>=1 && cps.value.match('[0-9]+$');else costperseat"></div>
-              <ng-template #costperseat>
-                <p *ngIf="cps.value.length!=0 " [ngStyle]="{'background-color':'red','color':'white'}">Item Price
-                  incorrect, must be greater than/equal to 1 </p>
-              </ng-template>
-
+          </tr>
+       
+          <tr>
+                <td><b>Event Date</b></td>
+            <div class="form-group">
+                <label for="date_of_journey">Date Of Journey</label>
+                <input type="date" class="form-control form-control-lg dateselect" min="{{minDate|date:'yyyy-MM-dd'}}" max="{{maxDate|date:'yyyy-MM-dd'}}" name="journeyDateValue" [(ngModel)]="journeydate">
             </div>
-          </div>
+            
 
-        </tr>
+          </tr>
 
+
+        
 
         <tr>
           <td></td>

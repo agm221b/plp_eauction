@@ -96,7 +96,7 @@ public class AuctionItem {
 		return "AuctionItem [itemId=" + itemId + ", itemName=" + itemName + ", initPrice=" + initPrice
 				+ ", currentPrice=" + currentPrice + ", currentBidder=" + currentBidder + ", finalPrice=" + finalPrice
 				+ ", finalOwner=" + finalOwner + ", soldFlag=" + soldFlag + ", paymentType=" + paymentType
-				+ ", auctionEvent=" + auctionEvent + ", deleteFlag=" + deleteFlag + ", createdBy=" + createdBy
+				+ ", auctionEventName=" + auctionEvent.getEventName() + ", deleteFlag=" + deleteFlag + ", createdBy=" + createdBy
 				+ ", creationDate=" + creationDate + ", lastModifiedBy=" + lastModifiedBy + ", lastModifiedDate="
 				+ lastModifiedDate + "]";
 	}

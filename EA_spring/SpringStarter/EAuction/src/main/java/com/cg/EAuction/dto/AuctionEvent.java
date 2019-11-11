@@ -23,6 +23,7 @@ import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class AuctionEvent {
@@ -35,6 +36,7 @@ public class AuctionEvent {
 	@Size(min=3, max=20, message = "Name should be between 3-20 characters")
 	private String eventName;
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "auctionEvent", fetch = FetchType.EAGER)
+	@JsonIgnore
 	private List<AuctionItem> itemList;
 	
 	private String venue;

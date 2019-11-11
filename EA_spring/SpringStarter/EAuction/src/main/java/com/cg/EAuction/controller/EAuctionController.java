@@ -111,18 +111,6 @@ public class EAuctionController {
 		}
 	}
 	
-	/*
-	 * @PutMapping("/additemtoevent") //@PreAuthorize public ResponseEntity<?>
-	 * addItemToEvent(@RequestParam("itemId") Long itemId, @RequestParam("eventId")
-	 * Long eventId){
-	 * 
-	 * try { adminService.addItemToEvent(itemId, eventId); } catch (EAException e) {
-	 * // TODO Auto-generated catch block logger.error(e.getMessage()); return new
-	 * ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST); }
-	 * 
-	 * return new ResponseEntity<String>("Item Added to Event", HttpStatus.OK); }
-	 */
-	
 	
 	
 	/*
@@ -212,6 +200,13 @@ public class EAuctionController {
 	public ResponseEntity<?> viewAllEvents(){
 		logger.info("Viewing List of events");
 		return new ResponseEntity<List<AuctionEvent>>(adminService.viewAllEvents(), HttpStatus.OK);
+	}
+	
+	@GetMapping("/viewalleventNames")
+	//@PreAuthorize
+	public ResponseEntity<?> viewAllEventNames(){
+		logger.info("Viewing List of events");
+		return new ResponseEntity<String>(adminService.viewAllEvents().toString(), HttpStatus.OK);
 	}
 	
 	@GetMapping("/viewitemsinevent")
