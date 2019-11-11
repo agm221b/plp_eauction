@@ -8,5 +8,6 @@ export class User{
     gender: string;
     mobileNo: string;
     totalExpense: number;
+    roles:string;
     
 }

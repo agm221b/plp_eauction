@@ -16,12 +16,16 @@ import { ShowItems } from './_component/app.showitems';
 import { AdminHome } from './_component/app.adminhome';
 import { CustomerHome } from './_component/app.customerhome';
 import { LiveEvent } from './_component/app.liveevent';
+import { LoginComponent } from './_component/app.login';
+import { RegisterComponent } from './_component/app.register';
 
 
 const myroutes: Routes = [
     { path: '', component: HomeComponent, pathMatch: 'full' },
     { path: 'home', component: HomeComponent },
     { path: 'admin', component: AdminHome },
+    { path: 'login', component: LoginComponent },
+    { path: 'register', component: RegisterComponent },
     { path: 'customer', component: CustomerHome },
     { path: 'additem', component: AddItem },
     { path: 'showitems', component: ShowItems },
@@ -41,7 +45,7 @@ const myroutes: Routes = [
 
     ],
     declarations: [
-        AppComponent, HomeComponent, aboutUs, AddItem, ShowItems, ShowEvents, AddEvent, AdminHome, CustomerHome, LiveEvent
+        AppComponent, HomeComponent, aboutUs, AddItem, ShowItems, ShowEvents, AddEvent, AdminHome, CustomerHome, LiveEvent, LoginComponent, RegisterComponent
     ],
     providers: [DatePipe],
     bootstrap: [AppComponent]

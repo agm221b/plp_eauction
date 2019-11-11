@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
 import { AuctionItem } from '../_model/app.auctionitem';
+import { User} from "../_model/app.user";
 
 
 @Injectable({
@@ -51,6 +52,27 @@ export class AuctionService {
 
     checkLiveEvent(){
         return this.myhttp.get("http://"+window.location.hostname+":9021/ea/checkliveevent");
+    }
+
+    getAllEventItems(eventId:any){
+        console.log(eventId);
+        return this.myhttp.get("http://"+window.location.hostname+":9021/ea/viewalleventitems?eventId="+eventId);
+    }
+
+    checkBid(itemId){
+        return this.myhttp.get("http://"+window.location.hostname+":9021/ea/checkbid?itemId="+itemId);
+    }
+
+    checkLogin(username, pass){
+        return this.myhttp.get("http://"+window.location.hostname+":9021/ea/checklogin?username="+username+"&pass="+pass);
+    }
+
+    getRole(username){
+        return this.myhttp.get("http://"+window.location.hostname+":9021/ea/getrole?username="+username);
+    }
+
+    addUser(user){
+        return this.myhttp.post("http://"+window.location.hostname+":9021/ea/adduser",user);
     }
 
 }

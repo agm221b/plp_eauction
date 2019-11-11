@@ -1,3 +1,4 @@
+import {AuctionItem} from './app.auctionitem';
 
 export class AuctionEvent{
     eventId:number;
@@ -6,5 +7,6 @@ export class AuctionEvent{
     date: string;
     startTime: string;
     endTime: string;
+    itemsList: AuctionItem[];
     
 }

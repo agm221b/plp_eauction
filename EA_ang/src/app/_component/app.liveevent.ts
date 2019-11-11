@@ -19,8 +19,10 @@ export class LiveEvent implements OnInit {
     particularDate:any;
     givenDate:any;
     eventStatus: string = "Event Status Undefined";
+    itemsList: any[];
     dateFormat='dd-MM-yyyy';
     dateEqual:boolean =false;
+    bidStatus: boolean=false;
 
     ngOnInit(){
         this.currentDate= new Date();
@@ -47,10 +49,20 @@ export class LiveEvent implements OnInit {
                 this.eventStatus = "Event Not Started";
                 alert("Event not started");
             }else{
-                this.eventStatus = "Event Started"; 
+                this.eventStatus = "Event Started";
+                console.log(event);
+                this.auctionService.getAllEventItems(event.eventId).subscribe((data:any)=>this.itemsList=data);
+                
+                  
             }
             }
             
         });
+    }
+
+    requestBid(itemId:any){
+        this.auctionService.checkBid(itemId).subscribe((bidStatus:boolean)=>this.bidStatus=bidStatus);
+        console.log(this.bidStatus);
+        //
     }
 }

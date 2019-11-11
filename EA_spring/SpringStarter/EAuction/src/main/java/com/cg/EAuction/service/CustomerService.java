@@ -16,4 +16,10 @@ public interface CustomerService {
 	public int completePayment(Long itemId, String paymentType) throws EAException;
 	
 	public List<AuctionEvent> viewEventList();
+	
+	public Boolean checkBid(Long itemId);
+	
+	public Boolean checkLogin(String username, String pass);
+	
+	public User getRole(String username);
 }

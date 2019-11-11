@@ -163,6 +163,17 @@ public class AdminServiceImpl implements AdminService {
 	}
 	
 	
+	
+	
+	@Override
+	public List<AuctionItem> viewAllEventItems(Long eventId) {
+		// TODO Auto-generated method stub
+		
+		AuctionEvent saveEvent =eventRepository.findByEventIdAndDeleteFlag(eventId, 0);
+		
+		return saveEvent.getItemList();
+	}
+
 	@Override
 	public int addItemToEvent(Long itemId, Long eventId) throws EAException {
 		// TODO Auto-generated method stub

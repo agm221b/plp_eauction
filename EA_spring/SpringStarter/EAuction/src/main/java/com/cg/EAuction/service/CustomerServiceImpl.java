@@ -77,4 +77,39 @@ public class CustomerServiceImpl implements CustomerService {
 		return eventRepository.findAllByDeleteFlag(0);
 	}
 
+	@Override
+	public Boolean checkBid(Long itemId) {
+		// TODO Auto-generated method stub
+		AuctionItem itemSave= itemRepository.findByItemIdAndDeleteFlag(itemId, 0);
+		if(itemSave.getSoldFlag()!=2)
+		{
+			itemSave.setSoldFlag(2);
+			itemSave.setCurrentPrice(itemSave.getInitPrice()+100);
+			return true;
+		}
+		else
+		return false;
+	}
+
+	@Override
+	public Boolean checkLogin(String username, String pass) {
+		// TODO Auto-generated method stub
+		if(userRepository.findByUsernameAndPassAndActive(username, pass, true)!=null) {
+			return true;
+		}
+		return false;	
+	}
+
+	@Override
+	public User getRole(String username) {
+		// TODO Auto-generated method stub
+		User findUser = userRepository.findByUsernameAndActive(username, true);
+		return findUser;
+	}
+	
+	
+	
+	
+	
+
 }

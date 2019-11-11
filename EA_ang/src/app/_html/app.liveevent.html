@@ -62,10 +62,10 @@
                                     <li>
                                         <a class="page-scroll" href="/showevents">View All Events</a>
                                     </li>
-                                    
 
-                                    
-                                    
+
+
+
                                 </ul>
                             </div>
                             <!-- navbar-collapse -->
@@ -78,18 +78,29 @@
         <!-- header-area end -->
     </header>
     <!-- header end -->
-<br> <br> <br> <br> <br> <br>
+    <br> <br> <br> <br> <br> <br>
     Current Date : {{currentDate}} <br>
 
-    Current Time : {{currentTime}} <br>
 
-    Particular Date : {{particularDate}} <br>
+    <h3 class="text-center">Running Event: {{runningEvent.eventName}} </h3>
 
-    Dates are equal: {{dateEqual}} <br>
+    <h4 class="text-center">Event Status: {{eventStatus}}</h4>
 
-    Running Event: {{runningEvent.eventName}}
+    <div class="container" style="text-align: center; font-size: large;">
+        <table class="table table-bordered" style="align-content: center;">
+            <tr *ngFor="let item of itemsList">
+                <td>
+                    <div class="row">Name : {{item.itemName}} </div>
+                    <div class="row">Initial Price: {{item.initPrice}} </div>
+                    <div class="row">Current Price: {{item.currentPrice}} </div>
+                    <div class="row">Current Bidder: {{item.currentOwner}} </div>
+                    <input type="button" value="Bid" (click)="requestBid(item.itemId)"> <br>
+                    
+                </td>
+            </tr>
 
-    Event Status: {{eventStatus}}
+        </table>
+    </div>
 
 
     <!-- Start Footer bottom Area -->

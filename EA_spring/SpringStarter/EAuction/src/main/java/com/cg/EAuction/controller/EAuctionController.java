@@ -119,10 +119,26 @@ public class EAuctionController {
 	 * Request Bid left
 	 * Synchronized method
 	 */
+	@GetMapping("/checkbid")
+	public ResponseEntity<?> checkBid(@RequestParam("itemId") Long itemId){
+		logger.info("Checking if item is biddable");
+		return new ResponseEntity<Boolean>(customerService.checkBid(itemId), HttpStatus.OK);
+		
+		
+	}
+	
 	
 	/*
 	 * Start event at a fixed time
 	 */
+	@GetMapping("/viewalleventitems")
+	//@PreAuthorize
+	public ResponseEntity<?> viewAllEventItems(@RequestParam("eventId") Long eventId){
+		
+		logger.info("Viewing List of Event's Items");
+		return new ResponseEntity<List<AuctionItem>>(adminService.viewAllEventItems(eventId), HttpStatus.OK);
+	}
+	
 	
 	/*******User**********/	
 	
@@ -160,6 +176,20 @@ public class EAuctionController {
 	public ResponseEntity<?> viewAllUsers(){
 		logger.info("Viewing List of Users");
 		return new ResponseEntity<List<User>>(adminService.viewAllUser(), HttpStatus.OK);
+	}
+	
+	@GetMapping("/checklogin")
+	//@PreAuthorize
+	public ResponseEntity<?> checkLogin(@RequestParam("username")String username, @RequestParam("pass")String pass){
+		logger.info("Checking Login");
+		return new ResponseEntity<Boolean>(customerService.checkLogin(username, pass), HttpStatus.OK);
+	}
+	
+	@GetMapping("/getrole")
+	//@PreAuthorize
+	public ResponseEntity<?> getRole(@RequestParam("username")String username){
+		logger.info("Fetching role");
+		return new ResponseEntity<User>(customerService.getRole(username), HttpStatus.OK);
 	}
 	
 	/*******Event**********/
@@ -224,6 +254,8 @@ public class EAuctionController {
 		logger.info("Viewing particular event");
 		return new ResponseEntity<AuctionEvent>(adminService.viewAnEvent(eventId), HttpStatus.OK);
 	}
+	
+	
 	
 	
 	

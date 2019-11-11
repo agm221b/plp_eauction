@@ -86,7 +86,141 @@
   <!-- header end -->
   <br> <br> <br> <br> <br> <br>
 
-  
+  <div class="container">
+    <div class="form-group"
+      style="  opacity: 0.97; text-align: center; background-color: khaki; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: larger;">
+      <table style="color: maroon; border-collapse: separate; " class="table table-hover">
+        <tr>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+
+
+        </tr>
+
+        <tr>
+          <td><b>Username</b></td>
+
+          <div class="form-row">
+            <div class="form-group col-sm-6">
+
+              <div class="col-md-16 "><input #n [ngClass]="{'form-control':'true' }" placeholder="User Name" type="text"
+                  [(ngModel)]="model.username" /></div>
+              <div *ngIf="n.value.length>=4 && n.value.match('^[a-zA-Z ]*$');else name"></div>
+              <ng-template #name>
+                <p *ngIf="n.value.length!=0 " [ngStyle]="{'background-color':'red','color':'white'}">User Name should
+                  have atleast 4 characters and must be an alphabet </p>
+              </ng-template>
+
+            </div>
+          </div>
+        </tr>
+
+        <tr>
+          <td><b>Password</b></td>
+
+          <div class="form-row">
+            <div class="form-group col-sm-6">
+
+              <div class="col-md-16 "><input #np [ngClass]="{'form-control':'true' }" placeholder="Password"
+                  type="password" [(ngModel)]="model.pass" /></div>
+              <div *ngIf="np.value.length>=4 && np.value.match('^[a-zA-Z ]*$');else namep"></div>
+              <ng-template #namep>
+                <p *ngIf="np.value.length!=0 " [ngStyle]="{'background-color':'red','color':'white'}">Password should
+                  have atleast 4 characters and must be an alphabet </p>
+              </ng-template>
+
+            </div>
+          </div>
+        </tr>
+
+
+        <tr>
+          <td><b>Email</b></td>
+
+          <div class="form-row">
+            <div class="form-group col-sm-6">
+
+              <div class="col-md-16 "><input #ne [ngClass]="{'form-control':'true' }" placeholder="Email" type="text"
+                  [(ngModel)]="model.email" /></div>
+              <div *ngIf="ne.value.length>=4 && ne.value.match('[^@]+@[^\.]+\..+');else namem"></div>
+              <ng-template #namem>
+                <p *ngIf="ne.value.length!=0 " [ngStyle]="{'background-color':'red','color':'white'}">Email is incorrect</p>
+              </ng-template>
+
+            </div>
+          </div>
+        </tr>
+
+
+        <tr>
+          <td><b>Role: </b></td>
+          <div class="form-row">
+            <div class="form-group col-md-8">
+
+              <div class="form-group">
+                <select class="form-control" [(ngModel)]="model.userType" required>
+                  <option value="" disabled selected>Choose your option</option>
+                  <option value="A">Admin</option>
+                  <option value="C">Customer</option>
+                </select>
+
+              </div>
+            </div>
+          </div>
+
+        </tr>
+
+        <tr>
+          <td><b>Gender: </b></td>
+          <div class="form-row">
+            <div class="form-group col-md-8">
+
+              <div class="form-group">
+                <select class="form-control" [(ngModel)]="model.gender" required>
+                  <option value="" disabled selected>Choose your option</option>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                </select>
+
+              </div>
+            </div>
+          </div>
+
+        </tr>
+
+        <tr>
+          <td><b>Mobile Number</b></td>
+          <div class="form-row">
+            <div class="form-group col-md-8">
+              <div class="col-md-18"><input #cps [ngClass]="{'form-control':'true' }" placeholder="Mobile No"
+                  type="text" [(ngModel)]="model.mobileNo" /></div>
+              <div *ngIf="cps.value.length==10 && cps.value.match('\\d{10}');else costperseat"></div>
+              <ng-template #costperseat>
+                <p *ngIf="cps.value.length!=10 " [ngStyle]="{'background-color':'red','color':'white'}">Mobile No
+                  incorrect, must be equal to 10 digits </p>
+              </ng-template>
+
+            </div>
+          </div>
+
+        </tr>
+
+
+        <tr>
+          <td></td>
+          <td>
+            <input type="button" class="btn btn-success" style="font-size: 20px; padding: 10px;" id="addbutton"
+              [disabled]="validate()" type="button" value="Register" (click)="registerUser()" />
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+
+
   <!-- Start Footer bottom Area -->
   <footer>
     <div class="footer-area">
@@ -99,7 +233,8 @@
                   <h2><span>E</span>Auction</h2>
                 </div>
 
-                <p>This is a description of the online auctioning system called E Auction. Thank you for taking the time to read this. Hope you have a nice day. </p>
+                <p>This is a description of the online auctioning system called E Auction. Thank you for taking the time
+                  to read this. Hope you have a nice day. </p>
                 <div class="footer-icons">
                   <ul>
                     <li>
