@@ -12,6 +12,11 @@ export class ShowEvents implements OnInit  {
     
     eventsList: AuctionEvent[] = [];
 
+    public popoverTitle:string='Delete Confirmation';
+    public popoverMessage:string="Do you really want to delete the event?";
+    public confirmClicked:boolean=false;
+    public cancelClicked:boolean=false;
+
     constructor(private auctionService: AuctionService){
 
     }
@@ -22,5 +27,11 @@ export class ShowEvents implements OnInit  {
 
     deleteEvent(eventId:any){
         this.auctionService.deleteEvent(eventId).subscribe();
+        location.reload();
+    }
+
+    sortByName(){
+        this.eventsList.sort((val1, val2)=>
+        val1.eventName.localeCompare(val2.eventName));
     }
 }

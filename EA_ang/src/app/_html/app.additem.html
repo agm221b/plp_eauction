@@ -14,8 +14,6 @@
 
 <body data-spy="scroll" data-target="#navbar-example">
 
-  <div id="preloader"></div>
-
   <header>
     <!-- header-area start -->
     <div id="sticker" class="header-area">
@@ -159,10 +157,10 @@
 
               <div class="form-group">
 
-                <select class="form-control form-control-lg" name="event" [(ngModel)]="model.auctionEvent" 
+                <select class="form-control form-control-lg" name="event" [(ngModel)]="aucEventId" 
                    required>
                   <option disabled selected>--Select--</option>
-                  <option *ngFor="let aucEvent of events;" [value]="aucEvent">{{aucEvent.eventName}}</option>
+                  <option *ngFor="let aucEvent of events;" [value]="aucEvent.eventId">{{aucEvent.eventName}}</option>
                 </select>
               </div>
             </div>
@@ -175,7 +173,7 @@
           <div class="form-row">
             <div class="form-group col-md-8">
               <div class="col-md-18"><input #cps [ngClass]="{'form-control':'true' }" placeholder="Item Price"
-                  type="text" [(ngModel)]="model.itemPrice" /></div>
+                  type="text" [(ngModel)]="model.initPrice" /></div>
               <div *ngIf="cps.value.length>=1 && cps.value.match('[0-9]+$');else costperseat"></div>
               <ng-template #costperseat>
                 <p *ngIf="cps.value.length!=0 " [ngStyle]="{'background-color':'red','color':'white'}">Item Price

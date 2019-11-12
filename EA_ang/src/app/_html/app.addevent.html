@@ -14,7 +14,7 @@
 
 <body data-spy="scroll" data-target="#navbar-example">
 
-  <div id="preloader"></div>
+ 
 
   <header>
     <!-- header-area start -->
@@ -138,11 +138,11 @@
           <div class="form-row">
             <div class="form-group col-sm-6">
 
-              <div class="col-md-16 "><input #n [ngClass]="{'form-control':'true' }" placeholder="Item Name" type="text"
-                  [(ngModel)]="model.itemName" /></div>
+              <div class="col-md-16 "><input #n [ngClass]="{'form-control':'true' }" placeholder="Event Name" type="text"
+                  [(ngModel)]="model.eventName" /></div>
               <div *ngIf="n.value.length>=4 && n.value.match('^[a-zA-Z ]*$');else name"></div>
               <ng-template #name>
-                <p *ngIf="n.value.length!=0 " [ngStyle]="{'background-color':'red','color':'white'}">Item Name should
+                <p *ngIf="n.value.length!=0 " [ngStyle]="{'background-color':'red','color':'white'}">Event Name should
                   have atleast 4 characters and must be an alphabet </p>
               </ng-template>
 
@@ -158,7 +158,7 @@
               <div class="form-group col-sm-6">
   
                 <div class="col-md-16 "><input #nv [ngClass]="{'form-control':'true' }" placeholder="Venue" type="text"
-                    [(ngModel)]="model.itemName" /></div>
+                    [(ngModel)]="model.venue" /></div>
                 <div *ngIf="nv.value.length>=4 && nv.value.match('^[a-zA-Z ]*$');else venue"></div>
                 <ng-template #venue>
                   <p *ngIf="nv.value.length!=0 " [ngStyle]="{'background-color':'red','color':'white'}">Venue Name should
@@ -171,22 +171,39 @@
        
           <tr>
                 <td><b>Event Date</b></td>
-            <div class="form-group">
-                <label for="date_of_journey">Date Of Journey</label>
-                <input type="date" class="form-control form-control-lg dateselect" min="{{minDate|date:'yyyy-MM-dd'}}" max="{{maxDate|date:'yyyy-MM-dd'}}" name="journeyDateValue" [(ngModel)]="journeydate">
+            <div class="form-group col-sm-6">
+                <input type="date" class="form-control form-control-lg dateselect" min="{{minDate|date:'yyyy-MM-dd'}}" max="{{maxDate|date:'yyyy-MM-dd'}}" name="dateofevent" [(ngModel)]="model.date">
             </div>
-            
+
 
           </tr>
 
+          <tr>
+                <td><b>Start Time</b></td>
+                <div class="form-row">
+                        <div class="form-group col-sm-6">
+                <td><input class="form-control" type="time" [(ngModel)]="model.startTime" /></td>
+                </div>
+                </div>
 
+            </tr>
+
+            <tr>
+                    <td><b>End Time</b></td>
+                    <div class="form-row">
+                            <div class="form-group col-sm-6">
+                    <td><input type="time" class="form-control" [(ngModel)]="model.endTime" /></td>
+                    </div>
+                    </div>
+
+                </tr>  
         
 
         <tr>
           <td></td>
           <td>
             <input type="button" class="btn btn-success" style="font-size: 20px; padding: 10px;" id="addbutton"
-              [disabled]="validate()" type="button" value="Add Item" (click)="addItem()" />
+              [disabled]="validate()" type="button" value="Add Event" (click)="addEvent()" />
           </td>
         </tr>
       </table>

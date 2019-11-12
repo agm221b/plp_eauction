@@ -14,7 +14,6 @@
 
 <body data-spy="scroll" data-target="#navbar-example">
 
-  <div id="preloader"></div>
 
   <header>
     <!-- header-area start -->
@@ -94,16 +93,16 @@
         style=" text-align: center; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;font-size: 20px;">
         <tr class="thead-dark" style="text-align: center;">
             <th style="width: 70px; text-align: center;">
-              <a  (click)="sortById()"> Sort by Event Id</a>
+             Event Id
             </th>
-            <th>Event Name</th>
+            <th> <a  (click)="sortByName()"> Sort: </a>Event Name</th>
             <th>Venue</th>
             <th>Date</th>
             <th>Start Time</th>
             <th>End Time</th>
             <th>Actions</th>
         </tr>
-        <tr *ngFor="let aucEvent of eventsList">
+        <tr *ngFor="let aucEvent of eventsList  | paginate : { itemsPerPage: 10, currentPage: p }">
             <td style="width: 70px;">{{aucEvent.eventId}}</td>
             <td>{{aucEvent.eventName}}</td>
             <td>{{aucEvent.venue}}</td>

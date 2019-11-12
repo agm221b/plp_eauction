@@ -82,6 +82,14 @@ public class AdminServiceImpl implements AdminService {
 		
 		
 	}
+	
+	
+
+	@Override
+	public AuctionEvent viewAnEvent(Long eventId) {
+		// TODO Auto-generated method stub
+		return eventRepository.findByEventIdAndDeleteFlag(eventId, 0);
+	}
 
 	/*******Item**********/
 

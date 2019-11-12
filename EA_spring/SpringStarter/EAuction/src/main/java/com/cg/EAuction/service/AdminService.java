@@ -19,6 +19,8 @@ public interface AdminService {
 	
 	public List<AuctionItem> viewAllItemsInEvent(Long eventId);
 	
+	public AuctionEvent viewAnEvent(Long eventId);
+	
 	/*******Item**********/
 	
 	public AuctionItem addItem(AuctionItem auctionItem, Long eventId) throws EAException;

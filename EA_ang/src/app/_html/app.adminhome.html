@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>About Us Page</title>
+  <title>Admin Home Page</title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta content="" name="keywords">
   <meta content="" name="description">
@@ -48,30 +48,22 @@
                   <li>
                     <a class="page-scroll" href="/aboutus">About</a>
                   </li>
-                  <li>
-                    <!-- <a class="page-scroll" href="/login">Login</a> -->
-                  </li>
-                  <li>
-                    <!-- <a class="page-scroll" href="#team">Team</a> -->
-                  </li>
-                  <li>
-                    <!-- <a class="page-scroll" href="#portfolio">Portfolio</a> -->
-                  </li>
-
-                  <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Login
+                  
+                  <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Event
                       <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
-                      <li><a href="/login">Login</a></li>
-                      <li><a href="/register">Register</a></li>
+                      <li><a href="/addevent">Add</a></li>
+                      <li><a href="/showevents">View</a></li>
                     </ul>
                   </li>
-
-                  <li>
-                    <!-- <a class="page-scroll" href="#blog">Blog</a> -->
-                  </li>
-                  <li>
-                    <a class="page-scroll" href="#contact">Contact</a>
-                  </li>
+                  <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Item
+                        <span class="caret"></span></a>
+                      <ul class="dropdown-menu" role="menu">
+                        <li><a href="/additem">Login</a></li>
+                        <li><a href="/showitems">Register</a></li>
+                      </ul>
+                    </li>
+                  
                 </ul>
               </div>
               <!-- navbar-collapse -->
@@ -84,44 +76,22 @@
     <!-- header-area end -->
   </header>
   <!-- header end -->
-  <br> <br> <br> <br> <br> <br>
 
-<div class="container" style="  opacity: 0.97;  background-size: 100%;">
+<!-- Start Slider Area -->
+<div id="home" class="slider-area">
+    <div class="bend niceties preview-2">
+      <div id="ensign-nivoslider" class="slides">
+        <img src="assets/img/aucbg1.jpg" alt="" title="#slider-direction-1" style="object-fit: cover;"/>
+        <img src="assets/img/aucbg2.jpg" alt="" title="#slider-direction-2" />
         
-    <table border="2px" class="table table-hover"
-        style=" text-align: center; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;font-size: 20px;">
-        <tr class="thead-dark" style="text-align: center;">
-            <th style="width: 70px; text-align: center;">
-              Item Id
-            </th>
-            <th> <a  (click)="sortByName()">Sort:  </a>Item Name</th>
-            <th>Starting Price</th>
-            <th>Final Price</th>
-            <th>Final Owner</th>
-            <th>Sold Flag</th>
-            <th>Actions</th>
-        </tr>
-        <tr *ngFor="let item of itemsList  | paginate : { itemsPerPage: 10, currentPage: p }">
-            <td style="width: 70px;">{{item.itemId}}</td>
-            <td>{{item.itemName}}</td>
-            <td>{{item.initPrice}}</td>
-            <td>{{item.finalPrice}}</td>
-            <td>{{item.finalOwner}}</td>
-            <td>{{item.soldFlag}}</td>
-            <td>
+      </div>
 
-                <input type="button" id="addbtn" class="btn btn-default" mwlConfirmationPopover
-                    [popoverTitle]="popoverTitle" [popoverMessage]="popoverMessage   +' '+item.itemName"
-                    placement="center" (confirm)=" deleteItem(item.itemId)" (cancel)="cancelClicked = true"
-                    value="Delete">
-            </td>
-        </tr>
-        <pagination-controls  (pageChange)="p = $event"></pagination-controls>
-    
-    </table>
-</div>
+    </div>
+  </div>
+  <!-- End Slider Area -->
 
 
+  
   <!-- Start Footer bottom Area -->
   <footer>
     <div class="footer-area">

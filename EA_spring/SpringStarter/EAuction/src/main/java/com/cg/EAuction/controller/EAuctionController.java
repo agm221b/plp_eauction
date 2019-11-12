@@ -2,6 +2,7 @@ package com.cg.EAuction.controller;
 
 import java.util.List;
 
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,7 +59,7 @@ public class EAuctionController {
 			return new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
 		}
 		
-		return new ResponseEntity<String>("Item Added", HttpStatus.OK);
+		return new ResponseEntity<String>(JSONObject.quote("Item Added"), HttpStatus.OK);
 	}
 	
 	
@@ -74,7 +75,7 @@ public class EAuctionController {
 			return new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
 		}
 		
-		return new ResponseEntity<String>("Item Updated", HttpStatus.OK);
+		return new ResponseEntity<String>(JSONObject.quote("Item Updated"), HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/removeitem")
@@ -89,7 +90,7 @@ public class EAuctionController {
 			return new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
 		}
 		
-		return new ResponseEntity<String>("Item Removed", HttpStatus.OK);
+		return new ResponseEntity<String>(JSONObject.quote("Item Removed"), HttpStatus.OK);
 	}
 	
 	@GetMapping("/viewallitems")
@@ -136,7 +137,7 @@ public class EAuctionController {
 			return new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
 		}
 		
-		return new ResponseEntity<String>("User Added", HttpStatus.OK);
+		return new ResponseEntity<String>(JSONObject.quote("User Added"), HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/removeuser")
@@ -151,7 +152,7 @@ public class EAuctionController {
 			return new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
 		}
 		
-		return new ResponseEntity<String>("User Removed", HttpStatus.OK);
+		return new ResponseEntity<String>(JSONObject.quote("User Removed"), HttpStatus.OK);
 	}
 	
 	@GetMapping("/viewallusers")
@@ -176,7 +177,7 @@ public class EAuctionController {
 			return new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
 		}
 		
-		return new ResponseEntity<String>("Event Added", HttpStatus.OK);
+		return new ResponseEntity<String>(JSONObject.quote("Event Added"), HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/removeevent")
@@ -191,7 +192,7 @@ public class EAuctionController {
 			return new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
 		}
 		
-		return new ResponseEntity<String>("Event Removed", HttpStatus.OK);
+		return new ResponseEntity<String>(JSONObject.quote("Event Removed"), HttpStatus.OK);
 	}
 	
 	
@@ -217,6 +218,12 @@ public class EAuctionController {
 		return new ResponseEntity<List<AuctionItem>>(adminService.viewAllItemsInEvent(eventId), HttpStatus.OK);
 	}
 	
+	@GetMapping("/viewanevent")
+	//@PreAuthorize
+	public ResponseEntity<?> viewAnEvent(@RequestParam("eventId")Long eventId){
+		logger.info("Viewing particular event");
+		return new ResponseEntity<AuctionEvent>(adminService.viewAnEvent(eventId), HttpStatus.OK);
+	}
 	
 	
 	

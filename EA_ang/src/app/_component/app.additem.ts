@@ -15,7 +15,7 @@ export class AddItem  implements OnInit{
 
     model:any ={itemName:"", initPrice:""};
     events: any[] = [];
-    
+    aucEventId: any;
     nameStatus: boolean=false;
     priceStatus: boolean=false;
 
@@ -29,11 +29,11 @@ export class AddItem  implements OnInit{
      }
 
      addItem(): any{
+        console.log(this.aucEventId+": aucEventId");
          
-         console.log(this.model+": model");
-        this.auctionService.addItem(this.model).subscribe((data:AuctionItem)=>console.log(data));
+        this.auctionService.addItem(this.model, this.aucEventId).subscribe((data:AuctionItem)=>location.reload());
         alert("Item Added Successfully");
-        this.router.navigate(['/home']);
+        this.router.navigate(['/showitems']);
      }
 
      validate(){

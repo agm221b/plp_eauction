@@ -13,20 +13,24 @@ export class AuctionService {
    
    
 
-    addItem(item:any): any{
+    addItem(item:any, aucEventId:any): any{
         console.log(item);
         //return this.myhttp.post("http://"+window.location.hostname+":9021/ea/additem",data);
-        return this.myhttp.post("http://"+window.location.hostname+":9021/ea/additem",item);
+        return this.myhttp.post("http://"+window.location.hostname+":9021/ea/additem?eventId="+aucEventId,item);
     }
 
     deleteItem(itemId:any){
         console.log(itemId);
-        return this.myhttp.get("http://"+window.location.hostname+":9021/ea/removeitem?itemId="+itemId);
+        return this.myhttp.delete("http://"+window.location.hostname+":9021/ea/removeitem?itemId="+itemId);
     }
 
     getAllItems(){
         
         return this.myhttp.get("http://"+window.location.hostname+":9021/ea/viewallitems");
+    }
+
+    getEvent(eventId){
+        return this.myhttp.get("http://"+window.location.hostname+":9021/ea/viewanevent?eventId="+eventId);
     }
 
 
@@ -36,13 +40,17 @@ export class AuctionService {
 
     deleteEvent(eventId:any){
         console.log(eventId);
-        return this.myhttp.get("http://"+window.location.hostname+":9021/ea/removeevent?eventId="+eventId);
+        return this.myhttp.delete("http://"+window.location.hostname+":9021/ea/removeevent?eventId="+eventId);
 
     }
 
     getAllEvents(){
         //return this.myhttp.get("http://"+window.location.hostname+":9021/ea/viewallevents");
         return this.myhttp.get("http://"+window.location.hostname+":9021/ea/viewallevents");
+    }
+
+    checkLiveEvent(){
+        return this.myhttp.get("http://"+window.location.hostname+":9021/ea/checkliveevent");
     }
 
 }
